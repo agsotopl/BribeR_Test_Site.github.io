@@ -12,11 +12,10 @@ navbar:
     articles:
       text: Articles
       menu:
-        - text: "Getting Started with Transcripts"
+        - text: "Getting Started"
           href: articles/getting_started.html
-        # Add more vignettes here as you create them:
-        # - text: "Network Analysis"
-        #   href: articles/network_analysis.html
+        - text: "Corpus Overview"
+          href: articles/corpus_overview.html
 
 reference:
   - title: "Read Transcripts"
@@ -36,6 +35,17 @@ reference:
       - run_transcript_network_app
 
 articles:
-  - title: "Getting Started"
+  - title: "Articles"
     contents:
       - getting_started
+      - corpus_overview
+
+
+
+
+
+
+
+
+
+
