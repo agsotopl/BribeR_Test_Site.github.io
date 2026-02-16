@@ -48,33 +48,32 @@ library(BribeR)
 
 ### Reading transcripts
 
-The `read_transcripts()` function loads pre-processed `.rda` files containing compiled transcript data. It supports loading from local file paths, remote URLs (e.g., GitHub raw links), or an installed package's `data/` directory.
+The `read_transcripts()` function loads the bundled Vladivideos transcript dataset. You can optionally filter to specific transcripts by ID.
 
 ```r
-# Load the full Vladivideos transcript dataset
-all_transcripts <- read_transcripts("vladivideos_transcripts", package = "BribeR")
+# Load all transcripts
+all_transcripts <- read_transcripts()
 
 head(all_transcripts)
-#> # A tibble: 6 × 5
-#>       n row_id speaker         speech                              speaker_std
-#>   <dbl>  <dbl> <chr>           <chr>                               <chr>
-#> 1     1      1 Montesinos      Buenos días, tome asiento...        montesinos
-#> 2     1      2 Speaker 2       Gracias, doctor...                  speaker_2
-#> ...
+#> # A tibble: 6 × 7
+#>   speaker                       speech                            speaker_std     n row_id date  topic
+#>   <chr>                         <chr>                             <chr>       <dbl>  <int> <chr> <chr>
+#> 1 BACKGROUND                    Reunión de Patricio Ricketts y V… BACKGROUND      6      1 1/12… topi…
+#> 2 BACKGROUND                    [Se encuentran reunidos en una s… BACKGROUND      6      2 1/12… topi…
+#> 3 El señor Vladimiro Montesinos Sentirá usted que (?) hemos cre… MONTESINOS      6      3 1/12… topi…
+#> 4 El señor Patricio Ricketts    No, al contrario.                 RICKETTS        6      4 1/12… topi…
+#> 5 El señor Vladimiro Montesinos Le voy a explicar qué ha pasado. MONTESINOS      6      5 1/12… topi…
+#> 6 El señor Patricio Ricketts    Con estos días tan... tan agitad… RICKETTS        6      6 1/12… topi…
 ```
 
 You can also filter to specific transcripts by ID:
 
 ```r
 # Retrieve only transcript 1
-t1 <- read_transcripts("vladivideos_transcripts", package = "BribeR", transcripts = 1)
+t1 <- read_transcripts(transcripts = 1)
 
 # Retrieve transcripts 5, 7, and 13
-subset_transcripts <- read_transcripts(
-  "vladivideos_transcripts",
-  package = "BribeR",
-  transcripts = c(5, 7, 13)
-)
+subset_transcripts <- read_transcripts(transcripts = c(5, 7, 13))
 ```
 
 ### Exploring transcript metadata
@@ -154,11 +153,13 @@ Transcript data loaded via `read_transcripts()` follows a standardized structure
 
 | Column        | Description                                  |
 |:------------- |:---------------------------------------------|
-| `n`           | Transcript identifier (numeric)              |
-| `row_id`      | Row number within each transcript            |
 | `speaker`     | Original speaker name as transcribed         |
 | `speech`      | The text content of the speech turn          |
-| `speaker_std` | Standardized (lowercase) speaker identifier  |
+| `speaker_std` | Standardized (uppercase) speaker identifier  |
+| `n`           | Transcript identifier (numeric)              |
+| `row_id`      | Row number within each transcript            |
+| `date`        | Date of the recorded conversation            |
+| `topic`       | Topic classification for the transcript      |
 
 This consistent format supports direct use with standard tidyverse workflows for text analysis, speaker comparison, and corpus-level aggregation.
 
@@ -174,6 +175,3 @@ R package version 0.0.0.9000. https://github.com/agsotopl/BribeR_Test_Site
 ## Acknowledgements
 
 Original transcript data was compiled and standardized as part of research into political corruption and institutional accountability. The Vladivideos corpus documents secretly recorded conversations that were central to understanding corruption networks during Peru's Fujimori administration.
-
-
-

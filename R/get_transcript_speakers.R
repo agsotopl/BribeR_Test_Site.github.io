@@ -1,38 +1,38 @@
 #' Get speakers present in each transcript
 #'
-#' Reads the canonical "speakers per transcript.csv" file and returns one row per
+#' Loads the bundled `speakers_per_transcript` dataset and returns one row per
 #' transcript `n` with a list-column of unique speakers present in that transcript.
-#'
-#' @param path Optional. Path to the speakers-per-transcript file.
-#'   Defaults to "data-raw/Inventory & Descriptions/speakers per transcript.csv".
 #'
 #' @return A tibble with columns:
 #'   - `n` (character): transcript id
 #'   - `speakers` (list): unique, sorted character vector of speakers for that transcript
+#'
 #' @examples
-#' # Load in all unique speakers in each transcript
+#' # Load all unique speakers in each transcript
 #' speakers <- get_transcript_speakers()
+#' head(speakers)
 #'
-#'
+#' @seealso [read_transcripts()], [get_transcript_id()], [get_transcripts_raw()]
 #' @export
-get_transcript_speakers <- function(
-    path = file.path("data-raw", "Inventory & Descriptions", "speakers per transcript.csv")
-) {
-  if (!file.exists(path)) {
-    stop("Speakers-per-transcript file not found at: ", path, call. = FALSE)
+get_transcript_speakers <- function() {
+  rda_path <- system.file("data", "speakers_per_transcript.rda", package = "BribeR")
+  if (rda_path == "") {
+    stop("Could not find speakers_per_transcript.rda in the BribeR package.", call. = FALSE)
   }
 
-  df <- readr::read_csv(path, show_col_types = FALSE, progress = FALSE)
+  env <- new.env()
+  load(rda_path, envir = env)
+  df <- env$speakers_per_transcript
 
   if (!"n" %in% names(df)) {
-    stop("Expected column 'n' in speakers-per-transcript file.", call. = FALSE)
+    stop("Expected column 'n' in speakers_per_transcript dataset.", call. = FALSE)
   }
 
   # accept both correct and misspelled prefixes
   speaker_cols <- grep("^(speakrer_std_|speaker_std_)[0-9]+$", names(df), value = TRUE)
   if (!length(speaker_cols)) {
     stop(
-      "No speaker columns found. Expected columns like 'speakrer_std_1' or 'speaker_std_1'.",
+      "No speaker columns found. Expected columns like 'speaker_std_1'.",
       call. = FALSE
     )
   }
@@ -51,6 +51,13 @@ get_transcript_speakers <- function(
       })
     ) |>
     dplyr::ungroup() |>
-    dplyr::select(n, speakers) |>
+    dplyr::select(.data$n, .data$speakers) |>
     tibble::as_tibble()
 }
+
+
+
+
+
+
+

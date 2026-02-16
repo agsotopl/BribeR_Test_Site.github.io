@@ -4,13 +4,7 @@
 \alias{get_transcript_speakers}
 \title{Get speakers present in each transcript}
 \usage{
-get_transcript_speakers(
-  path = file.path("data-raw", "Inventory & Descriptions", "speakers per transcript.csv")
-)
-}
-\arguments{
-\item{path}{Optional. Path to the speakers-per-transcript file.
-Defaults to "data-raw/Inventory & Descriptions/speakers per transcript.csv".}
+get_transcript_speakers()
 }
 \value{
 A tibble with columns:
@@ -20,12 +14,15 @@ A tibble with columns:
 }
 }
 \description{
-Reads the canonical "speakers per transcript.csv" file and returns one row per
+Loads the bundled \code{speakers_per_transcript} dataset and returns one row per
 transcript \code{n} with a list-column of unique speakers present in that transcript.
 }
 \examples{
-# Load in all unique speakers in each transcript
+# Load all unique speakers in each transcript
 speakers <- get_transcript_speakers()
+head(speakers)
 
-
+}
+\seealso{
+\code{\link[=read_transcripts]{read_transcripts()}}, \code{\link[=get_transcript_id]{get_transcript_id()}}, \code{\link[=get_transcripts_raw]{get_transcripts_raw()}}
 }

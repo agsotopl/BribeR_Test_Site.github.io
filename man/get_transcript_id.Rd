@@ -4,34 +4,28 @@
 \alias{get_transcript_id}
 \title{Retrieve Available Transcript IDs}
 \usage{
-get_transcript_id(package = "BribeRdata")
-}
-\arguments{
-\item{package}{Character string naming the package that stores the transcripts.
-Defaults to \code{"BribeRdata"}.}
+get_transcript_id()
 }
 \value{
-A numeric vector of available transcript IDs.
+A sorted numeric vector of available transcript IDs.
 }
 \description{
-This function lists all available transcript IDs (or \emph{n} values)
-based on the \code{.csv} files stored in the \code{data-raw/transcripts} folder
-of the \strong{BribeRdata} package.
+Lists all available transcript IDs based on the \code{.csv} files stored in
+the \code{data-raw/transcripts} folder of the \strong{BribeR} package.
 }
 \details{
 Each transcript is named numerically (e.g., \verb{1.csv}, \verb{19.csv}, \verb{104.csv}),
 and its ID corresponds directly to that number.
-
-For reference, see the BribeRdata repository:
-\url{https://github.com/jessietrudeau/BribeRdata/tree/main/data-raw/transcripts}
 }
 \examples{
-\dontrun{
 # Retrieve all available transcript IDs
 ids <- get_transcript_id()
+ids
 
 # Use those IDs to load specific transcripts
 subset <- get_transcripts_raw(n = ids[1:3])
-}
 
+}
+\seealso{
+\code{\link[=read_transcripts]{read_transcripts()}}, \code{\link[=get_transcripts_raw]{get_transcripts_raw()}}, \code{\link[=get_transcript_speakers]{get_transcript_speakers()}}
 }

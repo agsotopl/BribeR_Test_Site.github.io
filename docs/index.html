@@ -136,33 +136,32 @@
 </h2>
 <p>First, load the library:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">BribeR</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://agsotopl.github.io/BribeR_Test_Site">BribeR</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="reading-transcripts">Reading transcripts<a class="anchor" aria-label="anchor" href="#reading-transcripts"></a>
 </h3>
-<p>The <code><a href="reference/read_transcripts.html">read_transcripts()</a></code> function loads pre-processed <code>.rda</code> files containing compiled transcript data. It supports loading from local file paths, remote URLs (e.g., GitHub raw links), or an installed package’s <code>data/</code> directory.</p>
+<p>The <code><a href="reference/read_transcripts.html">read_transcripts()</a></code> function loads the bundled Vladivideos transcript dataset. You can optionally filter to specific transcripts by ID.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load the full Vladivideos transcript dataset</span></span>
-<span><span class="va">all_transcripts</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span><span class="st">"vladivideos_transcripts"</span>, package <span class="op">=</span> <span class="st">"BribeR"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Load all transcripts</span></span>
+<span><span class="va">all_transcripts</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">all_transcripts</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
-<span><span class="co">#&gt;       n row_id speaker         speech                              speaker_std</span></span>
-<span><span class="co">#&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;                               &lt;chr&gt;</span></span>
-<span><span class="co">#&gt; 1     1      1 Montesinos      Buenos días, tome asiento...        montesinos</span></span>
-<span><span class="co">#&gt; 2     1      2 Speaker 2       Gracias, doctor...                  speaker_2</span></span>
-<span><span class="co">#&gt; ...</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 6 × 7</span></span>
+<span><span class="co">#&gt;   speaker                       speech                            speaker_std     n row_id date  topic</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                         &lt;chr&gt;                             &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 BACKGROUND                    Reunión de Patricio Ricketts y V… BACKGROUND      6      1 1/12… topi…</span></span>
+<span><span class="co">#&gt; 2 BACKGROUND                    [Se encuentran reunidos en una s… BACKGROUND      6      2 1/12… topi…</span></span>
+<span><span class="co">#&gt; 3 El señor Vladimiro Montesinos Sentirá usted que (?) hemos cre… MONTESINOS      6      3 1/12… topi…</span></span>
+<span><span class="co">#&gt; 4 El señor Patricio Ricketts    No, al contrario.                 RICKETTS        6      4 1/12… topi…</span></span>
+<span><span class="co">#&gt; 5 El señor Vladimiro Montesinos Le voy a explicar qué ha pasado. MONTESINOS      6      5 1/12… topi…</span></span>
+<span><span class="co">#&gt; 6 El señor Patricio Ricketts    Con estos días tan... tan agitad… RICKETTS        6      6 1/12… topi…</span></span></code></pre></div>
 <p>You can also filter to specific transcripts by ID:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Retrieve only transcript 1</span></span>
-<span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span><span class="st">"vladivideos_transcripts"</span>, package <span class="op">=</span> <span class="st">"BribeR"</span>, transcripts <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span>transcripts <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Retrieve transcripts 5, 7, and 13</span></span>
-<span><span class="va">subset_transcripts</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span></span>
-<span>  <span class="st">"vladivideos_transcripts"</span>,</span>
-<span>  package <span class="op">=</span> <span class="st">"BribeR"</span>,</span>
-<span>  transcripts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">13</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">subset_transcripts</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span>transcripts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">13</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="exploring-transcript-metadata">Exploring transcript metadata<a class="anchor" aria-label="anchor" href="#exploring-transcript-metadata"></a>
@@ -251,14 +250,6 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><code>n</code></td>
-<td align="left">Transcript identifier (numeric)</td>
-</tr>
-<tr class="even">
-<td align="left"><code>row_id</code></td>
-<td align="left">Row number within each transcript</td>
-</tr>
-<tr class="odd">
 <td align="left"><code>speaker</code></td>
 <td align="left">Original speaker name as transcribed</td>
 </tr>
@@ -268,7 +259,23 @@
 </tr>
 <tr class="odd">
 <td align="left"><code>speaker_std</code></td>
-<td align="left">Standardized (lowercase) speaker identifier</td>
+<td align="left">Standardized (uppercase) speaker identifier</td>
+</tr>
+<tr class="even">
+<td align="left"><code>n</code></td>
+<td align="left">Transcript identifier (numeric)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>row_id</code></td>
+<td align="left">Row number within each transcript</td>
+</tr>
+<tr class="even">
+<td align="left"><code>date</code></td>
+<td align="left">Date of the recorded conversation</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>topic</code></td>
+<td align="left">Topic classification for the transcript</td>
 </tr>
 </tbody>
 </table>

@@ -1,6 +1,7 @@
 Package: BribeR
 Title: Package for Understanding Corruption Transcripts
 Version: 0.0.0.9000
+URL: https://agsotopl.github.io/BribeR_Test_Site
 Authors@R: 
     person("Andres", "Soto Plaza", , "andressotoplaza@gmail.com", role = c("aut", "cre"))
 Description: BribeR distributes curated and standardized transcript 
