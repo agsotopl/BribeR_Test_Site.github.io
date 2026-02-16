@@ -2,23 +2,24 @@
 % Please edit documentation in R/get_transcript_speakers.R
 \name{get_transcript_speakers}
 \alias{get_transcript_speakers}
-\title{Get speakers present in each transcript}
+\title{Get transcripts each speaker appears in}
 \usage{
 get_transcript_speakers()
 }
 \value{
 A tibble with columns:
 \itemize{
-\item \code{n} (character): transcript id
-\item \code{speakers} (list): unique, sorted character vector of speakers for that transcript
+\item \code{speaker_std} (character): standardized speaker identifier
+\item \code{transcripts} (list): sorted numeric vector of transcript IDs where the speaker appears
 }
 }
 \description{
 Loads the bundled \code{speakers_per_transcript} dataset and returns one row per
-transcript \code{n} with a list-column of unique speakers present in that transcript.
+unique speaker with a list-column of transcript IDs (\code{n}) where that speaker
+appears.
 }
 \examples{
-# Load all unique speakers in each transcript
+# Get all speakers and their transcript appearances
 speakers <- get_transcript_speakers()
 head(speakers)
 

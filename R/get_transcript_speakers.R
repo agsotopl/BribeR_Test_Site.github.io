@@ -1,14 +1,15 @@
-#' Get speakers present in each transcript
+#' Get transcripts each speaker appears in
 #'
 #' Loads the bundled `speakers_per_transcript` dataset and returns one row per
-#' transcript `n` with a list-column of unique speakers present in that transcript.
+#' unique speaker with a list-column of transcript IDs (`n`) where that speaker
+#' appears.
 #'
 #' @return A tibble with columns:
-#'   - `n` (character): transcript id
-#'   - `speakers` (list): unique, sorted character vector of speakers for that transcript
+#'   - `speaker_std` (character): standardized speaker identifier
+#'   - `transcripts` (list): sorted numeric vector of transcript IDs where the speaker appears
 #'
 #' @examples
-#' # Load all unique speakers in each transcript
+#' # Get all speakers and their transcript appearances
 #' speakers <- get_transcript_speakers()
 #' head(speakers)
 #'
@@ -37,27 +38,28 @@ get_transcript_speakers <- function() {
     )
   }
 
-  df |>
-    dplyr::mutate(n = as.character(.data$n)) |>
-    dplyr::rowwise() |>
-    dplyr::mutate(
-      speakers = list({
-        v <- unlist(dplyr::c_across(dplyr::all_of(speaker_cols)), use.names = FALSE)
-        v <- as.character(v)
-        v <- v[!is.na(v)]
-        v <- trimws(v)
-        v <- v[nzchar(v)]
-        sort(unique(v))
-      })
+  # Pivot to long format: one row per (n, speaker_std)
+  long <- df |>
+    dplyr::mutate(n = as.numeric(.data$n)) |>
+    tidyr::pivot_longer(
+      cols = dplyr::all_of(speaker_cols),
+      names_to = "slot",
+      values_to = "speaker_std"
     ) |>
-    dplyr::ungroup() |>
-    dplyr::select(.data$n, .data$speakers) |>
+    dplyr::mutate(speaker_std = trimws(as.character(.data$speaker_std))) |>
+    dplyr::filter(!is.na(.data$speaker_std) & .data$speaker_std != "") |>
+    dplyr::distinct(.data$speaker_std, .data$n)
+
+  # Group by speaker, collect transcript IDs
+  long |>
+    dplyr::group_by(.data$speaker_std) |>
+    dplyr::summarise(
+      transcripts = list(sort(unique(.data$n))),
+      .groups = "drop"
+    ) |>
+    dplyr::arrange(.data$speaker_std) |>
     tibble::as_tibble()
 }
-
-
-
-
 
 
 

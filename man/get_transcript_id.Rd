@@ -4,26 +4,51 @@
 \alias{get_transcript_id}
 \title{Retrieve Available Transcript IDs}
 \usage{
-get_transcript_id()
+get_transcript_id(speaker = NULL, topic = NULL)
+}
+\arguments{
+\item{speaker}{Optional character vector of one or more standardized speaker
+names (e.g., \code{"montesinos"}, \code{c("kouri", "crousillat")}). If provided,
+transcripts where any of these speakers are present will be included.}
+
+\item{topic}{Optional character vector of one or more topic names (e.g.,
+\code{"media"}, \code{c("reelection", "state_capture")}). The \code{topic_} prefix is
+added automatically if not included. Transcripts where any of these topics
+are flagged will be included.}
 }
 \value{
-A sorted numeric vector of available transcript IDs.
+A sorted numeric vector of matching transcript IDs.
 }
 \description{
 Lists all available transcript IDs based on the \code{.csv} files stored in
-the \code{data-raw/transcripts} folder of the \strong{BribeR} package.
+the \code{data-raw/transcripts} folder of the \strong{BribeR} package. Optionally
+filters to only those transcripts that include any of the specified
+speakers or topics, using the bundled \code{transcript_index} dataset.
 }
 \details{
+When multiple speakers and/or topics are provided, all filters are
+combined with OR logic: a transcript is included if \strong{any} of the
+specified speakers appear in it \strong{or} \strong{any} of the specified topics
+are flagged.
+
 Each transcript is named numerically (e.g., \verb{1.csv}, \verb{19.csv}, \verb{104.csv}),
 and its ID corresponds directly to that number.
 }
 \examples{
 # Retrieve all available transcript IDs
 ids <- get_transcript_id()
-ids
 
-# Use those IDs to load specific transcripts
-subset <- get_transcripts_raw(n = ids[1:3])
+# Retrieve transcript IDs where Montesinos appears
+get_transcript_id(speaker = "montesinos")
+
+# Retrieve transcript IDs where either Kouri or Crousillat appears
+get_transcript_id(speaker = c("kouri", "crousillat"))
+
+# Retrieve transcript IDs about media or reelection
+get_transcript_id(topic = c("media", "reelection"))
+
+# Combine: transcripts with Kouri OR about media
+get_transcript_id(speaker = "kouri", topic = "media")
 
 }
 \seealso{
