@@ -5,22 +5,22 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Package for Understanding Corruption Transcripts • bribeR</title>
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Package for Understanding Corruption Transcripts • BribeR</title>
+<script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Package for Understanding Corruption Transcripts">
-<meta name="description" content="What the package does (one paragraph).">
-<meta property="og:description" content="What the package does (one paragraph).">
+<meta name="description" content="BribeR distributes curated and standardized transcript corpora with integrated metadata for political and institutional research. The datasets include structured transcript text, topic annotations, and speaker identifiers formatted to support reproducible qualitative, quantitative, and network-based analysis.">
+<meta property="og:description" content="BribeR distributes curated and standardized transcript corpora with integrated metadata for political and institutional research. The datasets include structured transcript text, topic annotations, and speaker identifiers formatted to support reproducible qualitative, quantitative, and network-based analysis.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="index.html">bribeR</a>
+    <a class="navbar-brand me-2" href="index.html">BribeR</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
@@ -32,11 +32,25 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/getting_started.html">Getting Started with Transcripts</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
       </ul>
 </div>
 
@@ -44,8 +58,235 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-What the package does (one paragraph).
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="briber">BribeR<a class="anchor" aria-label="anchor" href="#briber"></a>
+</h1></div>
+<!-- badges: start -->
+<!-- badges: end -->
+<p><strong>BribeR</strong> distributes curated and standardized transcript corpora with integrated metadata for political and institutional research. The datasets include structured transcript text, topic annotations, and speaker identifiers formatted to support reproducible qualitative, quantitative, and network-based analysis.</p>
+<p>The package provides convenient access to transcript data such as the Vladivideos corpus — a collection of secretly recorded conversations involving Vladimiro Montesinos, Peru’s former intelligence chief, that document corruption, bribery, and political manipulation during the Fujimori era.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># When available on CRAN</span></span>
+<span><span class="co"># install.packages("BribeR")</span></span>
+<span></span>
+<span><span class="co"># For now, install the development version from GitHub</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"agsotopl/BribeR_Test_Site"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>The package currently includes 3 main functions to read and explore transcript data:</p>
+<table class="table">
+<colgroup>
+<col width="41%">
+<col width="58%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code><a href="reference/read_transcripts.html">read_transcripts()</a></code></td>
+<td align="left">Read standardized transcript datasets from <code>.rda</code> files</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/read_transcript_meta_data.html">read_transcript_meta_data()</a></code></td>
+<td align="left">Build a tidy metadata table (dates, speakers, topics, word counts)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/run_transcript_network_app.html">run_transcript_network_app()</a></code></td>
+<td align="left">Launch an interactive Shiny network visualizer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>{BribeR}</strong> also includes 3 support functions that allow users to access the raw transcript data directly:</p>
+<table class="table">
+<colgroup>
+<col width="41%">
+<col width="58%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code><a href="reference/get_transcript_id.html">get_transcript_id()</a></code></td>
+<td align="left">List all available transcript IDs</td>
+</tr>
+<tr class="even">
+<td align="left"><code><a href="reference/get_transcript_speakers.html">get_transcript_speakers()</a></code></td>
+<td align="left">Retrieve the speaker roster for each transcript</td>
+</tr>
+<tr class="odd">
+<td align="left"><code><a href="reference/get_transcripts_raw.html">get_transcripts_raw()</a></code></td>
+<td align="left">Load individual raw transcript <code>.csv</code> files</td>
+</tr>
+</tbody>
+</table>
+<p>The syntax of all <strong>{BribeR}</strong> functions follows a consistent logic, making it intuitive to load any dataset with a single line of code.</p>
+</div>
+<div class="section level2">
+<h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h2>
+<p>First, load the library:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">BribeR</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="reading-transcripts">Reading transcripts<a class="anchor" aria-label="anchor" href="#reading-transcripts"></a>
+</h3>
+<p>The <code><a href="reference/read_transcripts.html">read_transcripts()</a></code> function loads pre-processed <code>.rda</code> files containing compiled transcript data. It supports loading from local file paths, remote URLs (e.g., GitHub raw links), or an installed package’s <code>data/</code> directory.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load the full Vladivideos transcript dataset</span></span>
+<span><span class="va">all_transcripts</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span><span class="st">"vladivideos_transcripts"</span>, package <span class="op">=</span> <span class="st">"BribeR"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">all_transcripts</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;       n row_id speaker         speech                              speaker_std</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;                               &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1     1      1 Montesinos      Buenos días, tome asiento...        montesinos</span></span>
+<span><span class="co">#&gt; 2     1      2 Speaker 2       Gracias, doctor...                  speaker_2</span></span>
+<span><span class="co">#&gt; ...</span></span></code></pre></div>
+<p>You can also filter to specific transcripts by ID:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Retrieve only transcript 1</span></span>
+<span><span class="va">t1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span><span class="st">"vladivideos_transcripts"</span>, package <span class="op">=</span> <span class="st">"BribeR"</span>, transcripts <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Retrieve transcripts 5, 7, and 13</span></span>
+<span><span class="va">subset_transcripts</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcripts.html">read_transcripts</a></span><span class="op">(</span></span>
+<span>  <span class="st">"vladivideos_transcripts"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"BribeR"</span>,</span>
+<span>  transcripts <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">13</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="exploring-transcript-metadata">Exploring transcript metadata<a class="anchor" aria-label="anchor" href="#exploring-transcript-metadata"></a>
+</h3>
+<p>The <code><a href="reference/read_transcript_meta_data.html">read_transcript_meta_data()</a></code> function builds a tidy metadata table from multiple source files, combining transcript descriptions, speaker rosters, topic annotations, and word counts into a single tibble.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_transcript_meta_data.html">read_transcript_meta_data</a></span><span class="op">(</span></span>
+<span>  descriptions_path <span class="op">=</span> <span class="st">"data-raw/Inventory &amp; Descriptions/Descriptions.csv"</span>,</span>
+<span>  speakers_per_transcript_path <span class="op">=</span> <span class="st">"data-raw/Inventory &amp; Descriptions/speakers per transcript.csv"</span>,</span>
+<span>  transcripts_dir <span class="op">=</span> <span class="st">"data-raw/transcripts"</span>,</span>
+<span>  recursive <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   n     date       speakers   n_words topics</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;list&gt;       &lt;int&gt; &lt;list&gt;</span></span>
+<span><span class="co">#&gt; 1 1     2000-01-15 &lt;chr [3]&gt;     1245 &lt;chr [2]&gt;</span></span>
+<span><span class="co">#&gt; 2 2     2000-01-20 &lt;chr [2]&gt;      893 &lt;chr [1]&gt;</span></span>
+<span><span class="co">#&gt; ...</span></span></code></pre></div>
+<p>Each row represents one transcript, with:</p>
+<ul>
+<li>
+<strong><code>n</code></strong>: the transcript identifier</li>
+<li>
+<strong><code>date</code></strong>: date associated with the transcript</li>
+<li>
+<strong><code>speakers</code></strong>: a list-column of unique, sorted speaker names</li>
+<li>
+<strong><code>n_words</code></strong>: total word count across all speech turns</li>
+<li>
+<strong><code>topics</code></strong>: a list-column of topic labels derived from topic flags</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="accessing-raw-transcripts">Accessing raw transcripts<a class="anchor" aria-label="anchor" href="#accessing-raw-transcripts"></a>
+</h3>
+<p>The <code>get</code> family of functions provides direct access to the underlying raw data:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># List all available transcript IDs</span></span>
+<span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_transcript_id.html">get_transcript_id</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">ids</span></span>
+<span><span class="co">#&gt; [1]   1   2   3   5   7  12  13  19  ...</span></span>
+<span></span>
+<span><span class="co"># Load a specific raw transcript</span></span>
+<span><span class="va">t3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_transcripts_raw.html">get_transcripts_raw</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load multiple and combine into one tibble</span></span>
+<span><span class="va">combined</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_transcripts_raw.html">get_transcripts_raw</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">19</span>, <span class="fl">104</span><span class="op">)</span>, combine <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">combined</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get the speaker roster per transcript</span></span>
+<span><span class="va">speakers</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_transcript_speakers.html">get_transcript_speakers</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">speakers</span></span>
+<span><span class="co">#&gt; # A tibble: … × 2</span></span>
+<span><span class="co">#&gt;   n     speakers</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;</span></span>
+<span><span class="co">#&gt; 1 1     &lt;chr [3]&gt;</span></span>
+<span><span class="co">#&gt; 2 2     &lt;chr [2]&gt;</span></span>
+<span><span class="co">#&gt; ...</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="interactive-network-visualization">Interactive network visualization<a class="anchor" aria-label="anchor" href="#interactive-network-visualization"></a>
+</h3>
+<p>BribeR includes a Shiny application that visualizes the relationships between speakers and topics across the transcript corpus. The app provides two network views:</p>
+<ul>
+<li>
+<strong>Speaker–Topic Network</strong>: connects speakers to the topics discussed in their transcripts</li>
+<li>
+<strong>Speaker Co-Appearance Network</strong>: connects speakers who appear in the same transcript</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Launch the interactive network app</span></span>
+<span><span class="fu"><a href="reference/run_transcript_network_app.html">run_transcript_network_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Speakers are color-coded by type (e.g., Congress, Security, Judiciary, Media, Illicit) and sized by the number of transcripts they appear in. Hovering over nodes reveals detailed metadata including speaker position, type, and transcript count.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="data-structure">Data structure<a class="anchor" aria-label="anchor" href="#data-structure"></a>
+</h2>
+<p>Transcript data loaded via <code><a href="reference/read_transcripts.html">read_transcripts()</a></code> follows a standardized structure:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">Column</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>n</code></td>
+<td align="left">Transcript identifier (numeric)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>row_id</code></td>
+<td align="left">Row number within each transcript</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>speaker</code></td>
+<td align="left">Original speaker name as transcribed</td>
+</tr>
+<tr class="even">
+<td align="left"><code>speech</code></td>
+<td align="left">The text content of the speech turn</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>speaker_std</code></td>
+<td align="left">Standardized (lowercase) speaker identifier</td>
+</tr>
+</tbody>
+</table>
+<p>This consistent format supports direct use with standard tidyverse workflows for text analysis, speaker comparison, and corpus-level aggregation.</p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>If you use <strong>BribeR</strong> in published research, please cite it:</p>
+<pre><code>Soto Plaza, Andres (2025). BribeR: Package for Understanding Corruption Transcripts.
+R package version 0.0.0.9000. https://github.com/agsotopl/BribeR_Test_Site</code></pre>
+</div>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
+<p>Original transcript data was compiled and standardized as part of research into political corruption and institutional accountability. The Vladivideos corpus documents secretly recorded conversations that were central to understanding corruption networks during Peru’s Fujimori administration.</p>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
@@ -54,17 +295,11 @@ What the package does (one paragraph).
 </ul>
 </div>
 
-<div class="community">
-<h2 data-toc-skip>Community</h2>
-<ul class="list-unstyled">
-<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
-</ul>
-</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing bribeR</a></li>
+<li><a href="authors.html#citation">Citing BribeR</a></li>
 </ul>
 </div>
 

@@ -1,0 +1,62 @@
+---
+title: "Introduction to BribeR"
+description: "A first look at using BribeR to work with standardized transcript data."
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to BribeR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**{BribeR}** is an R package for working with structured transcript corpora and associated metadata. It provides functions to read, explore, and analyze transcripts from political and institutional datasets, with consistent formatting and integrated metadata to support reproducible workflows.
+
+---
+
+## Installation
+
+```r
+# Install the released version from CRAN (if available)
+install.packages("BribeR")
+
+# Or install the development version from GitHub
+remotes::install_github("agsotopl/BribeR")
+```
+
+---
+
+## Basic Usage
+
+The package currently includes 3 main functions:
+
+| Function | Description |
+|:---------|:------------|
+| `read_transcripts()` | Read standardized transcript datasets |
+| `read_transcript_meta_data()` | Extract metadata for transcripts |
+| `run_transcript_network_app()` | Launch interactive network visualizer |
+
+The package also contains 3 support functions that allow users to access the raw transcript data directly:
+
+| Function | Description |
+|:---------|:------------|
+| `get_transcript_id()` | Get unique transcript IDs |
+| `get_transcript_speakers()` | List speakers for a transcript |
+| `get_transcripts_raw()` | Load raw transcript text |
+
+Example:
+```r
+meta <- read_transcript_meta_data()
+head(meta, 6)
+```
+
+***Note:*** The `get` functions operate separately from the main functions, in that they access the raw data. The main functions are meant to access compilation RDA's. 
+
+Example:
+```r
+transcript_5 <- get_transcripts_raw(n = 5, combine = FALSE, package = "bribeR")
+
+head(transcript_1)
+```
+
+
+
+

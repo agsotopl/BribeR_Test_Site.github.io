@@ -4,10 +4,10 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Andres", "Soto Plaza", , "andressotoplaza@gmail.com", role = c("aut", "cre"))
 Description: BribeR distributes curated and standardized transcript 
-corpora with integrated metadata for political and institutional 
-research. The datasets include structured transcript text, topic 
-annotations, and speaker identifiers formatted to support 
-reproducible qualitative, quantitative, and network-based analysis.
+  corpora with integrated metadata for political and institutional 
+  research. The datasets include structured transcript text, topic 
+  annotations, and speaker identifiers formatted to support 
+  reproducible qualitative, quantitative, and network-based analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

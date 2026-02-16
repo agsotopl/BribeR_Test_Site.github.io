@@ -1,16 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>/404.html</loc></url>
-<url><loc>/CONTRIBUTING.html</loc></url>
-<url><loc>/LICENSE-text.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
-<url><loc>/authors.html</loc></url>
-<url><loc>/index.html</loc></url>
-<url><loc>/reference/get_transcript_id.html</loc></url>
-<url><loc>/reference/get_transcript_speakers.html</loc></url>
-<url><loc>/reference/get_transcripts_raw.html</loc></url>
-<url><loc>/reference/index.html</loc></url>
-<url><loc>/reference/read_transcript_meta_data.html</loc></url>
-<url><loc>/reference/read_transcripts.html</loc></url>
-<url><loc>/reference/run_transcript_network_app.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/404.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/CONTRIBUTING.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/LICENSE-text.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/LICENSE.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/articles/getting_started.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/articles/index.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/authors.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/index.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/get_transcript_id.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/get_transcript_speakers.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/get_transcripts_raw.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/index.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/read_transcript_meta_data.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/read_transcripts.html</loc></url>
+<url><loc>https://agsotopl.github.io/BribeR_Test_Site/reference/run_transcript_network_app.html</loc></url>
 </urlset>
 

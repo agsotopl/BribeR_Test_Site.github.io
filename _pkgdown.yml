@@ -1,4 +1,41 @@
-url: https://github.com/jessietrudeau/BribeR
+url: https://agsotopl.github.io/BribeR_Test_Site
+
 template:
   bootstrap: 5
+  light-switch: true
 
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, lightswitch, github]
+  components:
+    articles:
+      text: Articles
+      menu:
+        - text: "Getting Started with Transcripts"
+          href: articles/getting_started.html
+        # Add more vignettes here as you create them:
+        # - text: "Network Analysis"
+        #   href: articles/network_analysis.html
+
+reference:
+  - title: "Read Transcripts"
+    desc: "Functions for reading and processing transcripts"
+    contents:
+      - read_transcripts
+      - read_transcript_meta_data
+      - get_transcripts_raw
+  - title: "Transcript Details"
+    desc: "Functions for extracting transcript details"
+    contents:
+      - get_transcript_id
+      - get_transcript_speakers
+  - title: "Interactive Tools"
+    desc: "Shiny applications for exploring data"
+    contents:
+      - run_transcript_network_app
+
+articles:
+  - title: "Getting Started"
+    contents:
+      - getting_started
